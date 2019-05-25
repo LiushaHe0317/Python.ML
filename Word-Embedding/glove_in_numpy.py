@@ -2,7 +2,7 @@ import json
 import os
 import numpy
 import matplotlib.pyplot as plt
-from utils import get_wikipedia_data
+from utils import get_wikipedia_data, find_analogies
 
 
 class Glove:
@@ -115,11 +115,10 @@ def main(we_file, w2i_file, n_files=100):
     model.save(we_file)
 
 if __name__=='__main__':
-    we = 'glove_model_50.npz'
-    w2i = 'glove_word2idx_50.json'
-    # we = 'glove_model_brown.npz'
-    # w2i = 'glove_word2idx_brown.json'
-    main(we, w2i, use_brown=False)
+
+    we_path = 'glove_model_50.npz'
+    w2i_path = 'glove_word2idx_50.json'
+    main(we__path, w2i_path)
 
     # load back embeddings
     npz = numpy.load(we)
@@ -139,6 +138,7 @@ if __name__=='__main__':
         else:
             We = (W1 + W2.T) / 2
 
+        # find analogies between words
         find_analogies('king', 'man', 'woman', We, word2idx, idx2word)
         find_analogies('france', 'paris', 'london', We, word2idx, idx2word)
         find_analogies('france', 'paris', 'rome', We, word2idx, idx2word)
