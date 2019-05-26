@@ -1,8 +1,9 @@
 import os
 from sklearn.metrics.pairwise import pairwise_distances
 
+
 def get_wikipedia_data(n_files, n_vocab, by_paragraph=False):
-    prefix = '../large_files/'
+    prefix = 'Local_Dataset/word_embedding_data/'
 
     if not os.path.exists(prefix):
         print("Are you sure you've downloaded, converted, and placed the Wikipedia data into the proper folder?")
@@ -81,7 +82,6 @@ def get_wikipedia_data(n_files, n_vocab, by_paragraph=False):
             sentences_small.append(new_sentence)
 
     return sentences_small, word2idx_small
-
 
 def find_analogies(w1, w2, w3, We, word2idx, idx2word):
     V, D = We.shape
