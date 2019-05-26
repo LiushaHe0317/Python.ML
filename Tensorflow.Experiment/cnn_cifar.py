@@ -1,10 +1,3 @@
-# https://deeplearningcourses.com/c/data-science-deep-learning-in-theano-tensorflow
-# https://www.udemy.com/data-science-deep-learning-in-theano-tensorflow
-from __future__ import print_function, division
-from builtins import range
-# Note: you may need to update your version of future
-# sudo pip install -U future
-
 from keras.models import Sequential, Model
 from keras.layers import Dense, Activation, Lambda, Conv2D, MaxPooling2D, Flatten, Dropout, BatchNormalization, Input
 

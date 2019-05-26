@@ -1,16 +1,7 @@
-# https://deeplearningcourses.com/c/data-science-deep-learning-in-theano-tensorflow
-# https://www.udemy.com/data-science-deep-learning-in-theano-tensorflow
-from __future__ import print_function, division
-from builtins import range
-# Note: you may need to update your version of future
-# sudo pip install -U future
-
 from keras.models import Model
 from keras.layers import Dense, Activation, Conv2D, MaxPooling2D, Flatten, Input
-
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+
 
 from util import getKaggleMNIST3D, getKaggleFashionMNIST3D, getCIFAR10
 
