@@ -1,9 +1,7 @@
-import sys
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
-from gensim.models import KeyedVectors
+
 
 ## loading data
 train = pd.read_csv('datasets/r8-train-all-terms.txt', header = None, sep = '\t')
@@ -74,13 +72,14 @@ vectorizer = GloVe_Vectorizer()
 
 Xtrain = vectorizer.fit_transform(train.text)
 Ytrain = train.row
-
 Xtest = vectorizer.fit_transform(test.text)
 Ytest = test.row
 
 # create a model, train it and print scores
-themodel = ExtraTreesClassifier(n_estimators = 200)
-themodel.fit(Xtrain, Ytrain)
+model1 = ExtraTreesClassifier(n_estimators=200)
+model2 = RandomForestClassifier()
 
-print('train scores: ', themodel.score(Xtrain, Ytrain))
-print('test score: ', themodel.score(Xtest, Ytest))
+model1.fit(Xtrain, Ytrain)
+
+print('train scores: ', model1.score(Xtrain, Ytrain))
+print('test score: ', model1.score(Xtest, Ytest))
