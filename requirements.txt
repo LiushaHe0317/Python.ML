@@ -1,0 +1,14 @@
+numpy
+scipy
+nltk
+scikit-learn
+django
+django-restframework
+psycopg2
+tensorflow
+tensorflow-probability
+pytest
+matplotlib
+pandas
+pyspark
+scrapy
