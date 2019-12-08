@@ -1,5 +1,5 @@
 import numpy
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from UnsupervisedLearning.Clustering.data import DataCreator
 from UnsupervisedLearning.Clustering.algorithms import ExpectationMaximize
 
@@ -36,8 +36,21 @@ initial_means = [data[x] for x in chosen]
 initial_covs = [numpy.cov(data, rowvar=False)] * 3
 initial_weights = [1/3.] * 3
 
-# Run EM
+# Parameters after initialization
 EM = ExpectationMaximize()
+# Parameters after running EM to convergence
 results = EM.process(data, initial_means, initial_covs, initial_weights)
 
-print(results)
+print(results['weights'])
+print(results['means'])
+print(results['covs'][2])
+print(results['log-likelihood'])
+
+loglikelihoods = results['log-likelihood']
+
+plt.plot(range(len(loglikelihoods)), loglikelihoods, linewidth=4)
+plt.xlabel('Iteration')
+plt.ylabel('Log-likelihood')
+plt.rcParams.update({'font.size':16})
+plt.tight_layout()
+plt.show()

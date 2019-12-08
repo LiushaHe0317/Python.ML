@@ -2,7 +2,6 @@ import sys
 import time
 from sklearn.metrics import pairwise_distances
 import numpy as np
-from scipy.sparse import csr_matrix
 import matplotlib.pyplot as plt
 
 
@@ -10,20 +9,6 @@ class KMeans:
     """
     K means clustering algorithm.
     """
-    def load_file(self, filename):
-        """
-
-        :param filename:
-        :return:
-        """
-        loader = np.load(filename)
-        data = loader['data']
-        indices = loader['indices']
-        indptr = loader['indptr']
-        shape = loader['shape']
-
-        return csr_matrix((data, indices, indptr), shape)
-
     # Implement k-means
     def get_initial_centroids(self, data, k, seed=None):
         """
@@ -241,37 +226,4 @@ class KMeans:
         plt.tight_layout()
         plt.show()
 
-    def visualize_document_clusters(self, wiki, tf_idf, centroids, cluster_assignment, k, map_index_to_word,
-                                    display_content=True):
-        """
-        wiki: original dataframe
-       tf_idf: data matrix, sparse matrix format
-       map_index_to_word: SFrame specifying the mapping between words and column indices
-       display_content: if True, display 8 nearest neighbors of each centroid
-       """
-        print('==========================================================')
 
-        # Visualize each cluster c
-        for j in range(k):
-            # Cluster heading
-            print('Cluster {0:d}    '.format(j)),
-            # Print top 5 words with largest TF-IDF weights in the cluster
-            idx = centroids[j].argsort()[::-1]
-            # for i in range(5):  # Print each word along with the TF-IDF weight
-            #     print('{}:{}'.format(map_index_to_word['category'], centroids[j, idx[i]])),
-            # print('')
-
-            if display_content:
-                # Compute distances from the centroid to all data points in the cluster,
-                # and compute nearest neighbors of the centroids within the cluster.
-                distances = pairwise_distances(tf_idf, [centroids[j]], metric='euclidean').flatten()
-                distances[cluster_assignment != j] = float('inf')  # remove non-members from consideration
-                nearest_neighbors = distances.argsort()
-                # For 8 nearest neighbors, print the title as well as first 180 characters of text.
-                # Wrap the text at 80-character mark.
-                for i in range(8):
-                    text = ' '.join(wiki[nearest_neighbors[i]]['text'].split(None, 25)[0:25])
-                    print('\n* {0:50s} {1:.5f}\n  {2:s}\n  {3:s}'.format(wiki[nearest_neighbors[i]]['name'],
-                                                                         distances[nearest_neighbors[i]], text[:90],
-                                                                         text[90:180] if len(text) > 90 else ''))
-            print('==========================================================')

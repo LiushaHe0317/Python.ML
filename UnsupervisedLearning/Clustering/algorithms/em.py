@@ -1,4 +1,5 @@
 import numpy
+import matplotlib.pyplot as plt
 from scipy.stats import multivariate_normal
 
 
@@ -194,3 +195,4 @@ class ExpectationMaximize:
 
         return {'weights': weights, 'means': means, 'covs': covariances, 'log-likelihood': ll_trace,
                 'responsibilities': resp}
+

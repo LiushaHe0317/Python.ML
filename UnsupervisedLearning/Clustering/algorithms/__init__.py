@@ -1,2 +1,2 @@
-from .em_algorithm import ExpectationMaximize
+from .em import ExpectationMaximize
 from .k_means import KMeans
