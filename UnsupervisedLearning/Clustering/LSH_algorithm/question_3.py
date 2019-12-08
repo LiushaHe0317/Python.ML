@@ -7,7 +7,7 @@ from copy import copy
 from itertools import combinations
 
 base_dir = r"C:\Users\heliu\Desktop\ML Course\Clustering\W2_1"
-path_to_map = os.path.join(base_dir, r"people_wiki_map_index_to_word.json")
+index2words
 path_to_tfidf = os.path.join(base_dir, r"people_wiki_tf_idf.npz")
 path_to_data = os.path.join(base_dir, r"people_wiki.csv")
 
