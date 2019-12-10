@@ -1,2 +1,3 @@
 from .em import ExpectationMaximize
-from .k_means import KMeans
+from .kmeans import KMeans
+from .lda import LatentDirichletAllocation
