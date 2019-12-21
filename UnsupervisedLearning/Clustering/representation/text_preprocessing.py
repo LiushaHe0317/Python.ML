@@ -57,13 +57,13 @@ class TextRepresentation:
                 bow_vector.append(0)
         return bow_vector
 
-    def bag_of_words(self, path_to_corpus, n_of_column: int, n_of_words: int):
+    def fit(self, path_to_corpus, n_of_column=100, n_of_words=10):
         """
         This method returns the bag-of-words representation of a document.
 
         :param path_to_corpus: A path to corpus file.
         :param n_of_column: An integer indicating the column that contains a document.
-        :param n_of_words: An integer indicating the number of top words that willed be selected from all words.
+        :param n_of_words: An integer indicating the number of top words that will be selected from all words.
         :return: A 2D ``numpy.ndarray`` of bag of words matrix.
         """
         with open(path_to_corpus, 'r') as file:
@@ -83,10 +83,8 @@ class TextRepresentation:
             # filter the top n most frequent words
             top_words = self._top_words(word2count, n_of_words)
 
-            # create bow matrix
+            # create BOW matrix
             bow_matrix = []
             for line in csv.reader(file):
                 bow_matrix.append(self._create_vector(line[n_of_column - 1], top_words))
         return numpy.array(bow_matrix)
-
-    def tf_idf(self):
