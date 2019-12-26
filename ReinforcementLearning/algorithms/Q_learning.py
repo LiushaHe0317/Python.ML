@@ -1,6 +1,5 @@
 import numpy
 import pandas
-import time
 
 # global variiables
 N_STATES = 6

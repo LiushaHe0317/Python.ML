@@ -1,5 +1,4 @@
 from copy import deepcopy
-
 import numpy
 from scipy.sparse import spdiags
 from scipy.stats import multivariate_normal
