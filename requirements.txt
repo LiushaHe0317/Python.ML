@@ -4,7 +4,7 @@ nltk
 scikit-learn
 django
 django-restframework
-psycopg2
+psycopg2-binary
 tensorflow
 tensorflow-probability
 pytest
